@@ -1,0 +1,31 @@
+[package]
+name = "grep-lite"
+version = "0.1.0"
+edition = "2018"
+description = "A lightweight alternative to grep"
+license = "MIT"
+
+[lib]
+name = "grep-lite"
+path = "src/lib.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+structopt = "0.3.23"
+anyhow = "1.0.44"
+
+[dev-dependencies]
+assert_cmd = "2.0.1"
+predicates = "2.0.2"
+tempfile = "3.2.0"
+cargo-rpm = "0.8.0"
+
+[package.metadata.rpm]
+package = "grep-lite"
+
+[package.metadata.rpm.cargo]
+buildflags = ["--release"]
+
+[package.metadata.rpm.targets]
+grep-lite = { path = "/usr/bin/grep-lite" }
